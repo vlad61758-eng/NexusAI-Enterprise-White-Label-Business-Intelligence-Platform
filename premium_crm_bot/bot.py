@@ -74,6 +74,48 @@ async def process_show_catalog(callback: types.CallbackQuery):
     )
     await callback.answer()
 
+@dp.callback_query(F.data == "my_profile")
+async def process_my_profile(callback: types.CallbackQuery):
+    """Показує профіль користувача та його замовлення."""
+    user_id = callback.from_user.id
+
+    async with aiosqlite.connect(DB_PATH) as db:
+        # Отримуємо дані клієнта
+        async with db.execute('SELECT full_name, phone FROM clients WHERE user_id = ?', (user_id,)) as cursor:
+            client = await cursor.fetchone()
+
+        # Отримуємо замовлення клієнта
+        async with db.execute('''
+            SELECT products.name, orders.status
+            FROM orders
+            JOIN products ON orders.product_id = products.id
+            WHERE orders.user_id = ?
+        ''', (user_id,)) as cursor:
+            orders = await cursor.fetchall()
+
+    if not client:
+        await callback.answer("Профіль не знайдено 😔", show_alert=True)
+        return
+
+    full_name = client[0] or callback.from_user.full_name
+    phone = client[1] or "Не вказано (зробіть замовлення, щоб додати)"
+
+    profile_text = f"👤 <b>Ваш профіль:</b>\n\nІм'я: {full_name}\nТелефон: {phone}\n\n"
+
+    if orders:
+        profile_text += "📦 <b>Ваші замовлення:</b>\n"
+        for idx, (prod_name, status) in enumerate(orders, 1):
+            profile_text += f"{idx}. {prod_name} — [<i>{status}</i>]\n"
+    else:
+        profile_text += "У вас ще немає замовлень 😔"
+
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="🔙 Назад", callback_data="back_to_main")]
+    ])
+
+    await callback.message.edit_text(profile_text, reply_markup=keyboard, parse_mode="HTML")
+    await callback.answer()
+
 @dp.callback_query(F.data == "back_to_main")
 async def process_back_to_main(callback: types.CallbackQuery):
     """Повертає в головне меню."""
