@@ -1,0 +1,12 @@
+{
+  "name": "nexusai-enterprise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo \"No build command needed\"",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "author": "",
+  "license": "ISC"
+}

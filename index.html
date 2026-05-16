@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen Bots | Маркетплейс Готових Telegram Ботів</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#1e293b',
+                        accent: '#8b5cf6'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        .hero-pattern {
+            background-color: #0f172a;
+            background-image: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+        }
+
+        .product-hover {
+            transition: all 0.3s ease;
+        }
+        .product-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i class="fa-brands fa-telegram text-white text-xl"></i>
+                    </div>
+                    <span class="font-extrabold text-xl tracking-tight text-gray-900">NextGen<span class="text-blue-600">Bots</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#marketplace" class="text-gray-600 hover:text-blue-600 font-medium transition">Маркетплейс</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-blue-600 font-medium transition">Як це працює</a>
+                    <a href="#faq" class="text-gray-600 hover:text-blue-600 font-medium transition">FAQ</a>
+                </div>
+                <div>
+                    <a href="#marketplace" class="bg-gray-900 text-white px-5 py-2 rounded-lg font-medium hover:bg-gray-800 transition shadow-sm">Перейти до каталогу</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden relative">
+        <div class="absolute inset-0 opacity-20">
+            <svg class="absolute left-full transform -translate-x-1/2 -translate-y-1/4" width="404" height="784" fill="none" viewBox="0 0 404 784"><defs><pattern id="b1e6e422-73f8-40a5-b5d9-2fc659659b8a" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="4" height="4" fill="currentColor"></rect></pattern></defs><rect width="404" height="784" fill="url(#b1e6e422-73f8-40a5-b5d9-2fc659659b8a)" class="text-gray-700"></rect></svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-semibold mb-8">
+                <span class="flex h-2 w-2 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                </span>
+                Оновлений каталог 2024 року
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+                Готові рішення для <br />
+                <span class="gradient-text">Telegram Бізнесу</span>
+            </h1>
+
+            <p class="mt-4 text-xl text-gray-400 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+                Купуйте професійний вихідний код ботів (Python/aiogram). Розгортання за 5 хвилин на вашому сервері. Жодних щомісячних платежів.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#marketplace" class="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-blue-500 transition shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-store"></i> Відкрити Маркетплейс
+                </a>
+                <a href="#how-it-works" class="bg-white/10 text-white border border-white/20 px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/20 transition flex items-center justify-center gap-2 backdrop-blur-sm">
+                    <i class="fa-solid fa-play"></i> Як встановити?
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section id="marketplace" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Каталог продуктів</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Оберіть бота, який вирішить задачі саме вашого бізнесу. Кожен скрипт протестований та готовий до роботи.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Product 1: CRM & Shop -->
+                <div class="glass-card rounded-2xl overflow-hidden product-hover flex flex-col h-full bg-white">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800" alt="CRM Store" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white tag px-2 py-1 rounded">ХІТ ПРОДАЖІВ</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">E-Commerce CRM Bot</h3>
+                            <span class="text-2xl font-extrabold text-blue-600">$49</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 flex-grow">Повноцінний магазин в Telegram. Каталог товарів з фото, кошик, збір телефонів, адмін-панель та база даних SQLite.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> FSM для замовлень</div>
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Inline-каталог</div>
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Авто-інсталятор</div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mt-auto">
+                            <a href="https://t.me/adtmin321_bot" target="_blank" class="text-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2.5 rounded-lg text-sm transition">Демо</a>
+<a href="EcommerceCRMBot.zip" download="EcommerceCRMBot.zip" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg text-sm transition shadow-md flex items-center justify-center">Завантажити</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Support Ticket -->
+                <div class="glass-card rounded-2xl overflow-hidden product-hover flex flex-col h-full bg-white">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" alt="Support" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-gray-800 text-white tag px-2 py-1 rounded">B2B</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Support Desk Bot</h3>
+                            <span class="text-2xl font-extrabold text-blue-600">$29</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 flex-grow">Бот зворотного зв'язку. Клієнти пишуть боту, а менеджери відповідають їм через закритий адмінський чат. Анонімно та зручно.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Груповий чат для адмінів</div>
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Приховування контактів</div>
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Швидкі відповіді</div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mt-auto">
+                            <button class="text-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2.5 rounded-lg text-sm transition">Детальніше</button>
+<a href="SupportDeskBot.zip" download="SupportDeskBot.zip" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg text-sm transition shadow-md flex items-center justify-center">Завантажити</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Auto-Funnel -->
+                <div class="glass-card rounded-2xl overflow-hidden product-hover flex flex-col h-full bg-white">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Marketing" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-purple-600 text-white tag px-2 py-1 rounded">МАРКЕТИНГ</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Smart Funnel Bot</h3>
+                            <span class="text-2xl font-extrabold text-blue-600">$59</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 flex-grow">Автоворонка продажів для інфобізу. Видача лід-магніту за підписку на канал, серія прогріваючих повідомлень по таймеру.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Перевірка підписки</div>
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Відкладений постинг</div>
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Трекінг конверсій</div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mt-auto">
+                            <button class="text-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2.5 rounded-lg text-sm transition">Детальніше</button>
+<a href="SmartFunnelBot.zip" download="SmartFunnelBot.zip" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg text-sm transition shadow-md flex items-center justify-center">Завантажити</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Crypto Payment -->
+                <div class="glass-card rounded-2xl overflow-hidden product-hover flex flex-col h-full bg-white">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&q=80&w=800" alt="Crypto" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-yellow-500 text-white tag px-2 py-1 rounded">PREMIUM</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">VIP Crypto Gateway</h3>
+                            <span class="text-2xl font-extrabold text-blue-600">$89</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 flex-grow">Платна підписка на закриті групи. Автоматичний прийом оплат через CryptoBot API (USDT, TON, BTC). Видача унікальних інвайт-посилань.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Інтеграція Crypto Pay API</div>
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Управління доступом (кік)</div>
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Нагадування про оплату</div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mt-auto">
+                            <button class="text-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2.5 rounded-lg text-sm transition">Детальніше</button>
+<a href="VIPCryptoGateway.zip" download="VIPCryptoGateway.zip" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg text-sm transition shadow-md flex items-center justify-center">Завантажити</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: AI Assistant -->
+                <div class="glass-card rounded-2xl overflow-hidden product-hover flex flex-col h-full bg-white">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="AI" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-emerald-500 text-white tag px-2 py-1 rounded">ШТУЧНИЙ ІНТЕЛЕКТ</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">OpenAI Consultant</h3>
+                            <span class="text-2xl font-extrabold text-blue-600">$79</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 flex-grow">Розумний бот-консультант, підключений до ChatGPT (OpenAI API). Можна завантажити базу знань компанії, і він буде відповідати клієнтам 24/7.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Інтеграція OpenAI API</div>
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Пам'ять контексту</div>
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Логування діалогів</div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mt-auto">
+                            <button class="text-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2.5 rounded-lg text-sm transition">Детальніше</button>
+<a href="OpenAIConsultant.zip" download="OpenAIConsultant.zip" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg text-sm transition shadow-md flex items-center justify-center">Завантажити</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6: Moderator -->
+                <div class="glass-card rounded-2xl overflow-hidden product-hover flex flex-col h-full bg-white">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1614064641913-6b7140414c71?auto=format&fit=crop&q=80&w=800" alt="Security" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Group Moderator</h3>
+                            <span class="text-2xl font-extrabold text-blue-600">$35</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 flex-grow">Захист ваших чатів від спаму. Бот автоматично видаляє посилання від новачків, фільтрує нецензурну лексику та вітає нових учасників.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Анти-спам фільтр</div>
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Капча для нових юзерів</div>
+                            <div class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 w-5"></i> Система попереджень (Warns)</div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mt-auto">
+                            <button class="text-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2.5 rounded-lg text-sm transition">Детальніше</button>
+<a href="GroupModerator.zip" download="GroupModerator.zip" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg text-sm transition shadow-md flex items-center justify-center">Завантажити</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="how-it-works" class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16 text-gray-900">Як отримати та запустити бота?</h2>
+
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="relative">
+                    <div class="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mb-4 shadow-sm border border-blue-100 z-10 relative">1</div>
+                    <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-[2px] bg-gray-100 -z-0"></div>
+                    <h3 class="text-lg font-bold mb-2">Оберіть продукт</h3>
+                    <p class="text-gray-500 text-sm">Виберіть бота з каталогу та сплатіть карткою онлайн.</p>
+                </div>
+                <div class="relative">
+                    <div class="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mb-4 shadow-sm border border-blue-100 z-10 relative">2</div>
+                    <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-[2px] bg-gray-100 -z-0"></div>
+                    <h3 class="text-lg font-bold mb-2">Завантажте код</h3>
+                    <p class="text-gray-500 text-sm">Миттєво отримайте ZIP-архів з кодом та інструкцією.</p>
+                </div>
+                <div class="relative">
+                    <div class="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mb-4 shadow-sm border border-blue-100 z-10 relative">3</div>
+                    <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-[2px] bg-gray-100 -z-0"></div>
+                    <h3 class="text-lg font-bold mb-2">Введіть токен</h3>
+                    <p class="text-gray-500 text-sm">Відкрийте файл config.env і вставте свій токен від BotFather.</p>
+                </div>
+                <div class="relative">
+                    <div class="w-16 h-16 mx-auto bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-4 shadow-lg shadow-blue-500/30 z-10 relative">4</div>
+                    <h3 class="text-lg font-bold mb-2">Запустіть на сервері</h3>
+                    <p class="text-gray-500 text-sm">Запустіть bash-скрипт. Бот налаштує все сам і працюватиме 24/7.</p>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-gray-900 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between text-white shadow-2xl">
+                <div class="mb-6 md:mb-0 md:mr-8 text-center md:text-left">
+                    <h3 class="text-2xl font-bold mb-2">Не хочете розбиратися з серверами?</h3>
+                    <p class="text-gray-400">Ми пропонуємо послугу встановлення "Під ключ". Купуєте бота, даєте нам токен, і через 15 хвилин все працює.</p>
+                </div>
+                <a href="#marketplace" class="whitespace-nowrap bg-white text-gray-900 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition shadow-lg">Замовити встановлення (+$15)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+            <div class="col-span-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <i class="fa-brands fa-telegram text-white text-2xl"></i>
+                    <span class="font-bold text-xl text-white">NextGenBots</span>
+                </div>
+                <p class="text-sm max-w-sm">Преміальні рішення для автоматизації бізнесу в Telegram. Сучасні технології, чистий код, легке встановлення.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Навігація</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#home" class="hover:text-white transition">Головна</a></li>
+                    <li><a href="#marketplace" class="hover:text-white transition">Маркетплейс</a></li>
+                    <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Підтримка</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="https://t.me/support_manager" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-telegram text-blue-500 mr-2"></i> @support_manager</a></li>
+                    <li><a href="mailto:hello@nextgenbots.com" class="hover:text-white transition"><i class="fa-regular fa-envelope mr-2"></i> hello@nextgenbots.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-800 text-sm text-center">
+            &copy; 2024 NextGen Bots Marketplace. Всі права захищено.
+        </div>
+    </footer>
+
+</body>
+</html>
