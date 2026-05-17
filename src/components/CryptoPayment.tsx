@@ -8,7 +8,7 @@ interface CryptoPaymentProps {
   currency: string;
 }
 
-export default function CryptoPayment({ }: CryptoPaymentProps) {
+export default function CryptoPayment({ price, currency }: CryptoPaymentProps) {
   const [status, setStatus] = useState<"idle" | "connecting" | "paying" | "success">("idle");
 
   const handlePayment = async () => {
@@ -52,7 +52,7 @@ export default function CryptoPayment({ }: CryptoPaymentProps) {
       {status === "idle" && (
         <>
           <Wallet className="w-5 h-5" />
-          Pay with Crypto (Web3)
+          Pay ${price} ${currency} with Crypto (Web3)
         </>
       )}
       {status === "connecting" && (
