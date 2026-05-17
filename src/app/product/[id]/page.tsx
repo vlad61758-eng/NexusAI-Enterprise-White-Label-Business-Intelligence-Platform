@@ -32,13 +32,18 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               <p className="text-xl text-gray-400">{product.description}</p>
             </div>
 
-            {/* Video Placeholder */}
-            <div className="aspect-video bg-white/5 border border-white/10 rounded-2xl flex flex-col items-center justify-center group cursor-pointer relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center z-10 group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(147,51,234,0.5)]">
-                <Play className="w-8 h-8 text-white ml-2" />
-              </div>
-              <span className="mt-4 text-gray-300 font-medium z-10">Watch Demo &quot;How it works&quot;</span>
+            {/* Video Demo */}
+            <div className="aspect-video bg-white/5 border border-white/10 rounded-2xl relative overflow-hidden group">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&showinfo=0&rel=0&modestbranding=1"
+                title={`${product.name} Demo`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 z-10"
+              />
             </div>
 
             {/* Screenshots Placeholder */}
