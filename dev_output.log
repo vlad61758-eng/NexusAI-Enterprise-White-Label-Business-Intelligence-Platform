@@ -1,0 +1,24 @@
+
+> ai-store@0.1.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use, trying 3001 instead.
+ ⚠ Port 3001 is in use, trying 3002 instead.
+ ⚠ Port 3002 is in use, trying 3003 instead.
+ ⚠ Port 3003 is in use, trying 3004 instead.
+ ⚠ Port 3004 is in use, trying 3005 instead.
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3005
+
+ ✓ Starting...
+ ✓ Ready in 3.1s
+ ○ Compiling /product/[id] ...
+ ✓ Compiled /product/[id] in 7.6s (603 modules)
+ ✓ Compiled in 864ms (278 modules)
+ GET /product/leadgen-bot 404 in 9551ms
+ GET /product/leadgen-bot 404 in 81ms
+ GET /product/ai-leadgen-bot 200 in 84ms
+ ○ Compiling /api/verify-transaction ...
+ ✓ Compiled /api/verify-transaction in 535ms (335 modules)
+[MOCK BLOCKCHAIN] Verified tx a1b2c3d4e5f6g7h8i9j0 for 150. Sending product to test@example.com / @testuser
+ POST /api/verify-transaction 200 in 3648ms

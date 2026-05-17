@@ -32,18 +32,16 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               <p className="text-xl text-gray-400">{product.description}</p>
             </div>
 
-            {/* Video Demo */}
-            <div className="aspect-video bg-white/5 border border-white/10 rounded-2xl relative overflow-hidden group">
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&showinfo=0&rel=0&modestbranding=1"
-                title={`${product.name} Demo`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 z-10"
+            {/* Main Visual / Image Placeholder */}
+            <div className="aspect-video bg-black border border-white/10 rounded-2xl relative overflow-hidden group">
+              {/* This is a placeholder image from Unsplash suitable for code/AI projects */}
+              {/* Replace the 'src' with your actual video or dashboard screenshot later */}
+              <img
+                src={`https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200&h=675`}
+                alt={`${product.name} Interface`}
+                className="w-full h-full object-cover opacity-80"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
             </div>
 
             {/* Screenshots Placeholder */}

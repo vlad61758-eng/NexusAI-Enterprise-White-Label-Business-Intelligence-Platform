@@ -15,3 +15,7 @@
  ✓ Compiled /product/[id] in 6.3s (603 modules)
  ✓ Compiled in 541ms (278 modules)
  GET /product/ai-leadgen-bot 200 in 7902ms
+ ✓ Compiled in 4.4s (585 modules)
+ ✓ Compiled in 664ms (278 modules)
+ ✓ Compiled in 2.7s (571 modules)
+ ✓ Compiled in 1030ms (585 modules)
