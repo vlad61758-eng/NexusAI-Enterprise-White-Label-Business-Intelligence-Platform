@@ -7,7 +7,8 @@ export interface Product {
   currency: string;
   bestseller: boolean;
   features: string[];
-  setupInstructions: string;
+  includedFiles: string[];
+  setupInstructions: string[];
 }
 
 export const products: Product[] = [
@@ -19,8 +20,9 @@ export const products: Product[] = [
     price: 150,
     currency: "USDT",
     bestseller: true,
-    features: ["Auto-find clients based on keywords", "Personalized cold outreach messages", "Telegram & WhatsApp integration", "Daily lead reports"],
-    setupInstructions: "1. Unzip the file. 2. Edit `.env` with your API keys. 3. Run `npm run start`."
+    features: ["Auto-find clients based on keywords using NLP", "Personalized cold outreach messages tailored by OpenAI", "Seamless Telegram & WhatsApp API integration", "Daily Excel lead reports sent to your inbox", "Anti-ban rotation system with proxy support"],
+    includedFiles: ["bot_source_code.py (Main Script)", "requirements.txt (Dependencies)", ".env.example (Config template)", "readme_and_setup_guide.pdf"],
+    setupInstructions: ["Extract the provided `.zip` archive to your local machine or VPS.", "Rename `.env.example` to `.env` and fill in your OpenAI and Telegram API keys.", "Install Python dependencies by running `pip install -r requirements.txt`.", "Run the bot with the command `python bot_source_code.py`."]
   },
   {
     id: "ecommerce-content-generator",
@@ -30,8 +32,9 @@ export const products: Product[] = [
     price: 99,
     currency: "USDT",
     bestseller: false,
-    features: ["Mass generation from CSV", "SEO keyword optimization", "Multiple language support", "Direct Shopify integration"],
-    setupInstructions: "1. Access the web portal. 2. Input your OpenAI API key. 3. Upload your product list."
+    features: ["Mass generation from CSV data", "Advanced SEO keyword optimization", "Support for 20+ languages natively", "Direct Shopify API push integration"],
+    includedFiles: ["generator_app.js (Node.js backend)", "shopify_connector.js", "frontend_dashboard (React App)", "installation_guide.md"],
+    setupInstructions: ["Install Node.js on your server.", "Run `npm install` in the project directory.", "Add your OpenAI API key and Shopify Admin token to `.env`.", "Start the dashboard using `npm run start` and upload your CSV."]
   },
   {
     id: "smart-support-agent",
@@ -41,8 +44,9 @@ export const products: Product[] = [
     price: 120,
     currency: "USDT",
     bestseller: true,
-    features: ["Instant response times", "Order tracking integration", "Multi-platform (Web, TG, WA)", "Custom knowledge base ingestion"],
-    setupInstructions: "1. Deploy to Vercel/Heroku. 2. Connect your store's API. 3. Add the widget script to your site."
+    features: ["Sub-second instant response times", "Order tracking API integration (Shopify/WooCommerce)", "Multi-platform deployment (Web widget, TG, WA)", "Custom knowledge base ingestion via PDF/URL"],
+    includedFiles: ["support_agent_core.py", "web_widget.js", "docker-compose.yml", "knowledge_base_template.csv"],
+    setupInstructions: ["Deploy using the provided `docker-compose.yml` file.", "Upload your store's FAQ and policies to the knowledge base folder.", "Connect your store's API in the dashboard settings.", "Embed `web_widget.js` into your website's footer."]
   },
   {
     id: "docuparse-ai",
@@ -52,8 +56,9 @@ export const products: Product[] = [
     price: 75,
     currency: "USDT",
     bestseller: false,
-    features: ["High accuracy OCR", "Table extraction", "Export to CSV/Excel", "Google Sheets API integration"],
-    setupInstructions: "1. Run the Python script. 2. Point it to your folder of PDFs. 3. Get the parsed CSV."
+    features: ["High accuracy OCR utilizing state-of-the-art vision models", "Complex table extraction and formatting", "Direct export to CSV, Excel, or JSON", "Google Sheets API native integration"],
+    includedFiles: ["docuparse_engine.py", "google_sheets_auth.json", "sample_invoices/ (Test Data)", "readme.md"],
+    setupInstructions: ["Install required system libraries (Tesseract OCR).", "Install Python requirements via `pip`.", "Place your PDF invoices in the `/input` directory.", "Run `python docuparse_engine.py` and retrieve the parsed `.csv` in the `/output` folder."]
   },
   {
     id: "3d-asset-ai-optimizer",
@@ -63,8 +68,9 @@ export const products: Product[] = [
     price: 140,
     currency: "USDT",
     bestseller: false,
-    features: ["Auto-retopology", "UV mapping generation", "LOD generation", "Batch processing support"],
-    setupInstructions: "1. Install Blender and Python. 2. Run the script via Blender's CLI. 3. Specify input/output directories."
+    features: ["AI-driven auto-retopology preserving edge loops", "Automatic UV mapping generation", "LOD (Level of Detail) generation (LOD0 to LOD3)", "Batch processing support for entire folders"],
+    includedFiles: ["blender_addon.zip", "standalone_script.py", "optimization_presets.json", "tutorial_video.mp4"],
+    setupInstructions: ["Install Blender (version 3.0+).", "Go to Edit > Preferences > Add-ons and install `blender_addon.zip`.", "Select your high-poly model in the viewport.", "Click 'Optimize' in the new AI tool panel and wait for processing."]
   },
   {
     id: "social-media-auto-poster",
@@ -74,8 +80,9 @@ export const products: Product[] = [
     price: 85,
     currency: "USDT",
     bestseller: true,
-    features: ["Image & Text generation", "Multi-platform scheduling (X, IG, LinkedIn)", "Content calendar view", "Hashtag optimization"],
-    setupInstructions: "1. Set up social media API credentials. 2. Define your niche and tone. 3. Let AI generate and schedule."
+    features: ["DALL-E 3 Image & GPT-4 Text generation", "Multi-platform scheduling (X, Instagram, LinkedIn)", "Visual content calendar dashboard", "Algorithmic hashtag optimization"],
+    includedFiles: ["social_poster.js", "database_schema.sql", "frontend_calendar/", "setup_guide.pdf"],
+    setupInstructions: ["Import the `database_schema.sql` into your MySQL/PostgreSQL instance.", "Set up developer API credentials for X, Instagram, and LinkedIn.", "Configure your niche, tone of voice, and brand colors in `config.json`.", "Start the application and let AI generate your first month of content."]
   },
   {
     id: "competitor-price-tracker",
@@ -85,8 +92,9 @@ export const products: Product[] = [
     price: 50,
     currency: "USDT",
     bestseller: false,
-    features: ["Real-time scraping", "Alerts on price drops", "Historical price charts", "Proxy support"],
-    setupInstructions: "1. Configure target URLs in `config.json`. 2. Add proxies. 3. Run the tracking script."
+    features: ["Real-time distributed scraping architecture", "Instant Telegram alerts on price drops", "Historical price charts and analytics", "Built-in residential proxy rotation support"],
+    includedFiles: ["scraper_bot.py", "proxy_manager.py", "target_urls_template.csv", "readme.md"],
+    setupInstructions: ["Add your competitor product URLs to `target_urls_template.csv`.", "Add your proxy list to the configuration file to prevent IP bans.", "Set your Telegram Chat ID for notifications.", "Run the tracking script in the background using `tmux` or `systemd`."]
   },
   {
     id: "cold-email-outreach-ai",
@@ -96,8 +104,9 @@ export const products: Product[] = [
     price: 150,
     currency: "USDT",
     bestseller: true,
-    features: ["Automated inbox warmup", "AI personalized first lines", "Spam word checker", "A/B testing flows"],
-    setupInstructions: "1. Connect your SMTP/IMAP. 2. Import your lead list. 3. Launch the campaign."
+    features: ["Automated peer-to-peer inbox warmup network", "AI generated personalized first lines for higher reply rates", "Real-time spam word checker and deliverability score", "Complex A/B testing and follow-up flows"],
+    includedFiles: ["outreach_platform.zip", "warmup_scripts/", "email_templates.json", "installation_video.mp4"],
+    setupInstructions: ["Deploy the `outreach_platform.zip` to your VPS.", "Connect your SMTP/IMAP settings for your sending domains.", "Turn on 'Warmup Mode' for at least 7 days before sending.", "Import your lead CSV, configure your AI prompt, and launch the campaign."]
   },
   {
     id: "community-moderation-bot",
@@ -107,8 +116,9 @@ export const products: Product[] = [
     price: 60,
     currency: "USDT",
     bestseller: false,
-    features: ["Toxicity & sentiment analysis", "Custom rule enforcement", "Auto-kick/ban functionality", "Detailed moderation logs"],
-    setupInstructions: "1. Invite the bot to your server. 2. Set moderation strictness in the dashboard. 3. Enable."
+    features: ["Deep learning toxicity & sentiment analysis", "Customizable rule enforcement logic", "Auto-kick/ban functionality with appeal system", "Detailed moderation logs and analytics dashboard"],
+    includedFiles: ["discord_bot.js", "telegram_bot.py", "models/ (AI weights)", "config.yml"],
+    setupInstructions: ["Create a Bot token via Discord Developer Portal or BotFather.", "Edit `config.yml` with your bot token and moderation strictness levels.", "Run the respective bot script (`node discord_bot.js` or `python telegram_bot.py`).", "Invite the bot to your server and grant it Admin permissions."]
   },
   {
     id: "real-estate-listing-ai",
@@ -118,7 +128,8 @@ export const products: Product[] = [
     price: 90,
     currency: "USDT",
     bestseller: false,
-    features: ["Image-to-text analysis", "SEO optimized descriptions", "Highlighting key property features", "Tone customization"],
-    setupInstructions: "1. Upload property images. 2. Select property type. 3. Copy the generated text."
+    features: ["Advanced computer vision image-to-text analysis", "SEO optimized descriptions tailored for Zillow/Redfin", "Automatic highlighting of premium property features", "Tone customization (Luxury, Cozy, Modern)"],
+    includedFiles: ["real_estate_ai.py", "web_interface/", "prompt_templates.json", "readme.md"],
+    setupInstructions: ["Start the local web interface via `npm start` in the `web_interface/` folder.", "Run the backend processing engine `python real_estate_ai.py`.", "Open the browser interface and upload property images.", "Select the property type and desired tone, then generate the listing text."]
   }
 ];

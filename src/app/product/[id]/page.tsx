@@ -59,28 +59,50 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
             {/* What's Inside & Instructions */}
             <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-8">
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <h2 className="text-2xl font-bold mb-8 flex items-center gap-2">
                 <Terminal className="w-6 h-6 text-purple-400" /> What&apos;s inside
               </h2>
 
-              <div className="space-y-6">
+              <div className="space-y-10">
+                {/* Core Features */}
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-200 mb-3">Core Features:</h3>
-                  <ul className="space-y-3">
+                  <h3 className="text-xl font-semibold text-white mb-4 border-b border-white/10 pb-2">Core Features</h3>
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {product.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3 text-gray-400">
+                      <li key={i} className="flex items-start gap-3 text-gray-400 bg-white/5 p-4 rounded-xl border border-white/5">
                         <CheckCircle2 className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
-                        {feature}
+                        <span className="text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="pt-6 border-t border-white/10">
-                  <h3 className="text-lg font-semibold text-gray-200 mb-3">Quick Start:</h3>
-                  <p className="text-gray-400 font-mono text-sm bg-black/50 p-4 rounded-lg border border-white/10">
-                    {product.setupInstructions}
-                  </p>
+                {/* Included Files */}
+                <div>
+                  <h3 className="text-xl font-semibold text-white mb-4 border-b border-white/10 pb-2">Included in Archive</h3>
+                  <div className="flex flex-wrap gap-3">
+                    {product.includedFiles.map((file, i) => (
+                      <div key={i} className="px-4 py-2 bg-purple-500/10 border border-purple-500/20 text-purple-300 rounded-lg text-sm font-mono flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                        {file}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Quick Start */}
+                <div>
+                  <h3 className="text-xl font-semibold text-white mb-4 border-b border-white/10 pb-2">Quick Start Guide</h3>
+                  <div className="space-y-3">
+                    {product.setupInstructions.map((step, i) => (
+                      <div key={i} className="flex items-start gap-4 p-4 bg-black/40 border border-white/5 rounded-xl">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 text-white font-bold text-sm shrink-0">
+                          {i + 1}
+                        </div>
+                        <p className="text-gray-300 text-sm mt-1">{step}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

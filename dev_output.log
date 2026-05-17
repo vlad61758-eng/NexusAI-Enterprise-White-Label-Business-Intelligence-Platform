@@ -7,18 +7,17 @@
  ⚠ Port 3002 is in use, trying 3003 instead.
  ⚠ Port 3003 is in use, trying 3004 instead.
  ⚠ Port 3004 is in use, trying 3005 instead.
+ ⚠ Port 3005 is in use, trying 3006 instead.
   ▲ Next.js 14.2.35
-  - Local:        http://localhost:3005
+  - Local:        http://localhost:3006
 
  ✓ Starting...
- ✓ Ready in 3.1s
+ ✓ Ready in 1752ms
  ○ Compiling /product/[id] ...
- ✓ Compiled /product/[id] in 7.6s (603 modules)
- ✓ Compiled in 864ms (278 modules)
- GET /product/leadgen-bot 404 in 9551ms
- GET /product/leadgen-bot 404 in 81ms
- GET /product/ai-leadgen-bot 200 in 84ms
+ ✓ Compiled /product/[id] in 5.8s (603 modules)
+ ✓ Compiled in 486ms (278 modules)
+ GET /product/ai-leadgen-bot 200 in 7182ms
  ○ Compiling /api/verify-transaction ...
- ✓ Compiled /api/verify-transaction in 535ms (335 modules)
+ ✓ Compiled /api/verify-transaction in 2.6s (335 modules)
 [MOCK BLOCKCHAIN] Verified tx a1b2c3d4e5f6g7h8i9j0 for 150. Sending product to test@example.com / @testuser
- POST /api/verify-transaction 200 in 3648ms
+ POST /api/verify-transaction 200 in 5805ms

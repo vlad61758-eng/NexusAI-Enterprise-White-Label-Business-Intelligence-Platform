@@ -70,15 +70,29 @@ export default function CryptoPayment({ price, currency }: CryptoPaymentProps) {
         <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 mb-4">
           <CheckCircle2 className="w-8 h-8" />
         </div>
-        <h3 className="font-bold text-green-400 mb-2 text-lg">Оплата успішна!</h3>
-        <p className="text-sm text-gray-300 mb-2">
-          Дякуємо за покупку. Ми автоматично відправили архів та ліцензію на:
+        <h3 className="font-bold text-green-400 mb-2 text-lg">Оплата успішно підтверджена!</h3>
+        <p className="text-sm text-gray-300 mb-6">
+          Дякуємо за покупку. Ваш продукт готовий до завантаження.
         </p>
-        <p className="font-semibold text-white mb-1">{email}</p>
-        <p className="font-semibold text-white mb-4">{telegram}</p>
-        <p className="text-xs text-gray-500">
-          Якщо ви не отримаєте файл протягом 5 хвилин, зверніться до нашої підтримки (контакти внизу сайту).
-        </p>
+
+        <a
+          href="#"
+          className="w-full py-4 px-6 mb-6 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl transition-colors flex items-center justify-center gap-2"
+          onClick={(e) => {
+            e.preventDefault();
+            alert("Почалось завантаження архіву product.zip");
+          }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Завантажити архів
+        </a>
+
+        <div className="pt-4 border-t border-green-500/20 w-full">
+          <p className="text-xs text-gray-400 mb-1">
+            Резервна копія та ліцензійний ключ також були надіслані на:
+          </p>
+          <p className="font-medium text-white text-xs">{email} | {telegram}</p>
+        </div>
       </div>
     );
   }
