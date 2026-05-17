@@ -1,6 +1,6 @@
 import { products } from "@/lib/products";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2, Play, Terminal } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ShieldCheck, Zap, Code2, Terminal } from "lucide-react";
 import CryptoPayment from "@/components/CryptoPayment";
 import { notFound } from "next/navigation";
 
@@ -42,19 +42,6 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 className="w-full h-full object-cover opacity-80"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-            </div>
-
-            {/* Screenshots Placeholder */}
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Interface Screenshots</h2>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="aspect-[4/3] bg-white/5 rounded-xl border border-white/10 flex items-center justify-center text-gray-500">
-                  Dashboard View
-                </div>
-                <div className="aspect-[4/3] bg-white/5 rounded-xl border border-white/10 flex items-center justify-center text-gray-500">
-                  Settings / Logs
-                </div>
-              </div>
             </div>
 
             {/* What's Inside & Instructions */}
@@ -130,8 +117,20 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
               <CryptoPayment price={product.price} currency={product.currency} />
 
-              <div className="mt-4 text-center text-xs text-gray-500">
-                Secured via Web3 & Smart Contracts
+              <div className="mt-6 space-y-3 pt-6 border-t border-white/5">
+                <div className="flex items-center gap-3 text-sm text-gray-400">
+                  <ShieldCheck className="w-5 h-5 text-gray-500" /> Secure Crypto Payment
+                </div>
+                <div className="flex items-center gap-3 text-sm text-gray-400">
+                  <Zap className="w-5 h-5 text-gray-500" /> Instant Auto-Delivery
+                </div>
+                <div className="flex items-center gap-3 text-sm text-gray-400">
+                  <Code2 className="w-5 h-5 text-gray-500" /> Tested & Verified Code
+                </div>
+              </div>
+
+              <div className="mt-6 text-center text-xs text-gray-600 font-mono">
+                Decentralized Checkout Infrastructure
               </div>
             </div>
           </div>
