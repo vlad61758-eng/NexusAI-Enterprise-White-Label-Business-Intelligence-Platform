@@ -112,5 +112,5 @@ def download(product_id):
     return "File not found.", 404
 
 if __name__ == "__main__":
-    # Run the server on port 5000
-    app.run(host="0.0.0.0", port=5000)
+    # Run the server on port 3000
+    app.run(host="0.0.0.0", port=3000)
