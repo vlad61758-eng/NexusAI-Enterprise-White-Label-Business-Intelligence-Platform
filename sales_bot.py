@@ -44,8 +44,8 @@ async def cmd_start(message: Message):
     # Створення інлайн-клавіатури
     builder = InlineKeyboardBuilder()
     builder.button(text="❓ Як це працює?", callback_data="info_how_it_works")
-    builder.button(text="💻 Купити скрипт ($50)", callback_data="buy_script")
-    builder.button(text="🚀 Купити 'Під Ключ' ($200)", callback_data="buy_turnkey")
+    builder.button(text="📦 Базовий пакет ($50)", callback_data="buy_script")
+    builder.button(text="🤝 Скрипт + Підтримка ($100)", callback_data="buy_turnkey")
     builder.button(text="👤 Зв'язатися зі мною", url=f"https://t.me/{OWNER_USERNAME.replace('@', '')}")
 
     builder.adjust(1, 1, 1, 1) # По одній кнопці в ряд
@@ -68,13 +68,12 @@ async def callback_how_it_works(callback: CallbackQuery):
 @dp.callback_query(F.data == "buy_script")
 async def callback_buy_script(callback: CallbackQuery):
     text = (
-        "💻 **Покупка скрипта ($50)**\n\n"
-        "Ви отримаєте архів із повним вихідним кодом на Python (Telethon + Pandas) та "
-        "детальну інструкцію щодо налаштування.\n\n"
+        "📦 **Базовий пакет ($50)**\n\n"
+        "Включає повний вихідний код AI Лідогенератора (Python) та детальну текстову інструкцію.\n"
+        "Ви самі налаштовуєте бота за інструкцією.\n\n"
         "💳 **Для оплати відправте 50 USDT (мережа TRC20) на адресу:**\n"
         "`TSP2tJbLpfR1YvRz4VY67nMMXi6PTa6mfK`\n\n"
-        f"Після оплати, будь ласка, надішліть скріншот чеку або хеш транзакції менеджеру: {OWNER_USERNAME}, "
-        "і ви миттєво отримаєте файли!"
+        f"Після оплати надішліть скріншот транзакції менеджеру: {OWNER_USERNAME}"
     )
     await callback.message.answer(text, parse_mode="Markdown")
     await callback.answer()
@@ -82,12 +81,12 @@ async def callback_buy_script(callback: CallbackQuery):
 @dp.callback_query(F.data == "buy_turnkey")
 async def callback_buy_turnkey(callback: CallbackQuery):
     text = (
-        "🚀 **Послуга 'Під Ключ' ($200)**\n\n"
-        "Ми налаштуємо сервери та запустимо систему генерації лідів для вас!\n\n"
-        "💳 **Для оплати відправте 200 USDT (мережа TRC20) на адресу:**\n"
+        "🤝 **Скрипт + Підтримка ($100)**\n\n"
+        "Ви отримуєте код, і я особисто допоможу вам його налаштувати та запустити! "
+        "Відповім на всі запитання та покажу як усе працює на вашому ПК.\n\n"
+        "💳 **Для оплати відправте 100 USDT (мережа TRC20) на адресу:**\n"
         "`TSP2tJbLpfR1YvRz4VY67nMMXi6PTa6mfK`\n\n"
-        f"Після оплати, надішліть скріншот транзакції менеджеру: {OWNER_USERNAME}. "
-        "Ми зв'яжемося з вами для уточнення вашої ніші та списку чатів."
+        f"Після оплати надішліть скріншот транзакції менеджеру: {OWNER_USERNAME}"
     )
     await callback.message.answer(text, parse_mode="Markdown")
     await callback.answer()
