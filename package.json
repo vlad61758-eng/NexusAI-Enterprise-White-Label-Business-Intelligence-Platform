@@ -1,0 +1,8 @@
+{
+  "name": "python-repo-dummy",
+  "version": "1.0.0",
+  "description": "Dummy package.json to prevent Netlify from auto-detecting Node.js missing project",
+  "scripts": {
+    "build": "echo 'No build required'"
+  }
+}
