@@ -49,9 +49,21 @@ python sales_bot.py
 ```
 This bot provides a menu for clients to learn about the system and purchase it from you directly!
 
+### 6. Fully Automated Passive Income System (Optional)
+Instead of manually selling the bot, you can launch the fully automated Crypto E-commerce Site and Reddit Bot.
+1. Run `python app.py` to start the Flask Web Store. Clients can visit this site, see your USDT address, enter their Transaction ID, and instantly download the `AI_LeadGen_Pro.zip` file.
+2. Configure your Reddit API credentials in `.env` (Get them from `https://www.reddit.com/prefs/apps`).
+3. Run `python reddit_bot.py`. This bot will scan business subreddits (e.g. r/Entrepreneur) and use Gemini AI to automatically reply to people looking for leads, directing them to your website.
+
+**To run 24/7 on a VPS ($5/month):**
+Upload the files to a Linux VPS (like DigitalOcean or Hetzner). Use `tmux` or create systemd service files (`/etc/systemd/system/leadgen-store.service`) to keep `app.py` and `reddit_bot.py` running forever in the background!
+
 ## Files
 - `userbot.py`: The main UserBot script (Lead Generator).
 - `sales_bot.py`: The Aiogram Sales Manager Bot.
+- `app.py` & `templates/`: Automated Crypto Checkout Web Server.
+- `reddit_bot.py`: Reddit marketing bot using AI.
+- `AI_LeadGen_Pro.zip`: The packaged product for clients to download.
 - `.env`: Your private configuration file.
 - `requirements.txt`: Python dependencies.
 - `leads.xlsx`: Automatically generated file containing saved leads.
