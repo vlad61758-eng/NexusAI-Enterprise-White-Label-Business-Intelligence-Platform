@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from telethon import TelegramClient, events
 from telethon.errors import FloodWaitError
 from telethon.tl.types import User
+from openai import AsyncOpenAI
 
 # Set up logging
 logging.basicConfig(
@@ -29,6 +30,13 @@ API_HASH = os.getenv('API_HASH')
 TARGET_CHATS_STR = os.getenv('TARGET_CHATS', '')
 KEYWORDS_STR = os.getenv('KEYWORDS', '')
 ADMIN_CHAT = os.getenv('ADMIN_CHAT', 'me')
+AI_AUTO_REPLY = os.getenv('AI_AUTO_REPLY', 'False').lower() == 'true'
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+
+# Initialize Async OpenAI client if enabled
+openai_client = None
+if AI_AUTO_REPLY and OPENAI_API_KEY:
+    openai_client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 
 # Validate required variables
 if not API_ID or not API_HASH:
@@ -119,8 +127,63 @@ async def process_lead(event, matched_keywords):
             "Snippet": snippet
         })
 
+        # AI Auto-Reply Logic
+        if AI_AUTO_REPLY and OPENAI_API_KEY:
+            await handle_ai_reply(event, matched_keywords)
+
     except Exception as e:
         logger.error(f"Error processing lead: {e}")
+
+async def handle_ai_reply(event, matched_keywords):
+    """
+    Fetches context, analyzes via OpenAI, and automatically replies to the lead.
+    """
+    try:
+        chat = await event.get_chat()
+
+        # Fetch last 5 messages for context
+        history = await client.get_messages(chat, limit=5)
+        history_text = "\n".join([f"{msg.sender_id}: {msg.text}" for msg in reversed(history) if msg.text])
+
+        system_prompt = (
+            "You are a helpful, human-like sales manager representing a Telegram B2B Lead Generation agency. "
+            "You are monitoring a Telegram chat. A user just asked a question or sent a message that matched our keywords: "
+            f"{', '.join(matched_keywords)}. "
+            "Read the recent chat context below. Write a short, friendly, and helpful reply (in Ukrainian) "
+            "that naturally offers a solution to their problem using our Telegram bots or AI automation. "
+            "Do NOT sound like a spam bot. Keep it to 1-2 short sentences. "
+            "Gently suggest they check out your manager bot for details (just mention they can write to the bot, or provide general info)."
+        )
+
+        prompt = f"Chat Context:\n{history_text}\n\nUser's message:\n{event.message.text}\n\nGenerate your reply:"
+
+        logger.info("Requesting AI response asynchronously...")
+
+        if not openai_client:
+            logger.error("OpenAI client not initialized.")
+            return
+
+        response = await openai_client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=100,
+            temperature=0.7
+        )
+
+        reply_text = response.choices[0].message.content.strip()
+
+        if reply_text:
+            # Simulate human typing
+            logger.info("AI generated a response. Waiting 5 seconds before sending...")
+            await asyncio.sleep(5)
+            await event.reply(reply_text)
+            logger.info(f"AI auto-reply sent: {reply_text}")
+
+    except Exception as e:
+        logger.error(f"Error generating AI reply: {e}")
 
 def save_to_excel(data, filename="leads.xlsx"):
     """
