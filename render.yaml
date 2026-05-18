@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: ai-leadgen-store
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+
+  - type: worker
+    name: sales-bot
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python sales_bot.py"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: BOT_TOKEN
+        sync: false
+      - key: OWNER_USERNAME
+        sync: false
+
+  - type: worker
+    name: reddit-bot
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python reddit_bot.py"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: REDDIT_CLIENT_ID
+        sync: false
+      - key: REDDIT_CLIENT_SECRET
+        sync: false
+      - key: REDDIT_USERNAME
+        sync: false
+      - key: REDDIT_PASSWORD
+        sync: false
+      - key: STORE_URL
+        sync: false
