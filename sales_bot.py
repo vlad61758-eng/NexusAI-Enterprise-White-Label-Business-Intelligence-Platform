@@ -33,34 +33,34 @@ async def cmd_start(message: Message):
     Обробник команди /start. Вітає користувача та пропонує меню послуг.
     """
     welcome_text = (
-        f"👋 Привіт, {message.from_user.first_name}!\n\n"
-        "Я — ваш персональний менеджер. Ви, мабуть, перейшли сюди, "
-        "бо вас зацікавила наша **B2B AI-система для генерації лідів у Telegram**.\n\n"
-        "Ця система 24/7 моніторить нішеві чати за ключовими словами і миттєво "
-        "пересилає вам гарячі запити від потенційних клієнтів прямо в особисті повідомлення.\n\n"
-        "👇 Оберіть опцію нижче, щоб дізнатися більше або придбати:"
+        f"Вітаю, {message.from_user.first_name}. 💎\n\n"
+        "Ви знаходитесь в офіційному боті **AI LeadGen Pro** — преміального рішення для "
+        "автоматичного пошуку гарячих B2B клієнтів у Telegram.\n\n"
+        "Наш штучний інтелект безперервно аналізує сотні чатів і миттєво доставляє цільові запити "
+        "прямо у вашу CRM або особисті повідомлення.\n\n"
+        "Оберіть формат співпраці нижче:"
     )
 
-    # Створення інлайн-клавіатури
+    # Створення преміум інлайн-клавіатури
     builder = InlineKeyboardBuilder()
-    builder.button(text="❓ Як це працює?", callback_data="info_how_it_works")
-    builder.button(text="📦 Базовий пакет ($50)", callback_data="buy_script")
-    builder.button(text="🤝 Скрипт + Підтримка ($100)", callback_data="buy_turnkey")
-    builder.button(text="👤 Зв'язатися зі мною", url=f"https://t.me/{OWNER_USERNAME.replace('@', '')}")
+    builder.button(text="ℹ️ Як працює AI LeadGen", callback_data="info_how_it_works")
+    builder.button(text="📁 Ліцензія: Скрипт ($50)", callback_data="buy_script")
+    builder.button(text="💎 Ліцензія + VIP Підтримка ($100)", callback_data="buy_turnkey")
+    builder.button(text="👨‍💻 Зв'язок із розробником", url=f"https://t.me/{OWNER_USERNAME.replace('@', '')}")
 
-    builder.adjust(1, 1, 1, 1) # По одній кнопці в ряд
+    builder.adjust(1, 1, 1, 1)
 
-    await message.answer(welcome_text, reply_markup=builder.as_markup())
+    await message.answer(welcome_text, parse_mode="Markdown", reply_markup=builder.as_markup())
 
 @dp.callback_query(F.data == "info_how_it_works")
 async def callback_how_it_works(callback: CallbackQuery):
     text = (
-        "🔍 **Як це працює?**\n\n"
-        "1. Ми підключаємо ваш особистий або технічний акаунт до списку з десятків тематичних чатів.\n"
-        "2. Бот 24/7 сканує кожне нове повідомлення на задані ключові слова (наприклад: *потрібен дизайнер, шукаю підрядника*).\n"
-        "3. Щойно знаходиться збіг — бот моментально пересилає вам ліда в 'Збережені повідомлення' або адмін-чат.\n"
-        "4. Усі ліди автоматично зберігаються в Excel для зручної CRM-роботи.\n\n"
-        "Це легальний та швидкий спосіб знаходити гарячих клієнтів раніше за конкурентів!"
+        "⚙️ **Архітектура AI LeadGen Pro**\n\n"
+        "1. **Моніторинг:** Система підключається до вашого акаунта і сканує вибрані цільові чати 24/7.\n"
+        "2. **Аналіз Контексту:** Нейромережа (OpenAI) аналізує останні повідомлення, виявляючи реальний намір клієнта купити послугу.\n"
+        "3. **Авто-відповідь:** AI формує природну, нешаблонну відповідь і миттєво зв'язується з лідом, обходячи спам-фільтри.\n"
+        "4. **Експорт:** Всі дані ліда синхронізуються у вашу таблицю.\n\n"
+        "Ви купуєте інструмент, який генерує прибуток на автопілоті. Налаштування залишається на вашому боці, але ви завжди контролюєте процес."
     )
     await callback.message.answer(text, parse_mode="Markdown")
     await callback.answer()
@@ -68,12 +68,12 @@ async def callback_how_it_works(callback: CallbackQuery):
 @dp.callback_query(F.data == "buy_script")
 async def callback_buy_script(callback: CallbackQuery):
     text = (
-        "📦 **Базовий пакет ($50)**\n\n"
-        "Включає повний вихідний код AI Лідогенератора (Python) та детальну текстову інструкцію.\n"
-        "Ви самі налаштовуєте бота за інструкцією.\n\n"
-        "💳 **Для оплати відправте 50 USDT (мережа TRC20) на адресу:**\n"
+        "📁 **Ліцензія: AI Script ($50)**\n\n"
+        "Ви купуєте повний доступ до вихідного коду (Python, Telethon, OpenAI) та покрокову документацію "
+        "для самостійного розгортання на вашому ПК або сервері.\n\n"
+        "💳 **Реквізити для оплати (50 USDT, мережа TRC20):**\n"
         "`TSP2tJbLpfR1YvRz4VY67nMMXi6PTa6mfK`\n\n"
-        f"Після оплати надішліть скріншот транзакції менеджеру: {OWNER_USERNAME}"
+        f"Для отримання файлів надішліть підтвердження транзакції: {OWNER_USERNAME}"
     )
     await callback.message.answer(text, parse_mode="Markdown")
     await callback.answer()
@@ -81,12 +81,13 @@ async def callback_buy_script(callback: CallbackQuery):
 @dp.callback_query(F.data == "buy_turnkey")
 async def callback_buy_turnkey(callback: CallbackQuery):
     text = (
-        "🤝 **Скрипт + Підтримка ($100)**\n\n"
-        "Ви отримуєте код, і я особисто допоможу вам його налаштувати та запустити! "
-        "Відповім на всі запитання та покажу як усе працює на вашому ПК.\n\n"
-        "💳 **Для оплати відправте 100 USDT (мережа TRC20) на адресу:**\n"
+        "💎 **Ліцензія + VIP Підтримка ($100)**\n\n"
+        "Ви отримуєте систему AI LeadGen Pro, інструкції для самостійного встановлення, **АЛЕ** "
+        "також отримуєте мою особисту підтримку. Якщо у вас виникнуть труднощі під час налаштування — "
+        "я підкажу, допоможу вирішити помилки та проконсультую щодо найкращих практик використання.\n\n"
+        "💳 **Реквізити для оплати (100 USDT, мережа TRC20):**\n"
         "`TSP2tJbLpfR1YvRz4VY67nMMXi6PTa6mfK`\n\n"
-        f"Після оплати надішліть скріншот транзакції менеджеру: {OWNER_USERNAME}"
+        f"Для початку співпраці надішліть підтвердження транзакції: {OWNER_USERNAME}"
     )
     await callback.message.answer(text, parse_mode="Markdown")
     await callback.answer()
