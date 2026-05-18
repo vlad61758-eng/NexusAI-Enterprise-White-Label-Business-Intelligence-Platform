@@ -1,0 +1,18 @@
+# Environment variables
+.env
+
+# Telethon session files
+*.session
+*.session-journal
+
+# Excel exports
+leads.xlsx
+*.xlsx
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pytest cache
+.pytest_cache/
