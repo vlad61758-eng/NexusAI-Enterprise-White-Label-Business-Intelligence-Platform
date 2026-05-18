@@ -9,25 +9,16 @@ interface CryptoPaymentProps {
 }
 
 export default function CryptoPayment({ price, currency }: CryptoPaymentProps) {
-  const [status, setStatus] = useState<"idle" | "details" | "payment" | "verifying" | "success" | "error">("idle");
-  const [email, setEmail] = useState("");
-  const [telegram, setTelegram] = useState("");
+  const [status, setStatus] = useState<"idle" | "payment" | "verifying" | "success" | "error">("idle");
   const [txHash, setTxHash] = useState("");
   const [copied, setCopied] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Placeholder wallet address that you will replace later
-  const walletAddress = "TRXYourFutureCryptoWalletAddressHere...";
+  // Placeholder TRON Nile Testnet address (You will replace this with your real address later)
+  const walletAddress = "TVjsyZ7kFf5VWe3M2A3Q65Fk2G8C7N7f1K";
 
   const handleStartPayment = () => {
-    setStatus("details");
-  };
-
-  const handleProceedToPayment = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email && telegram) {
-      setStatus("payment");
-    }
+    setStatus("payment");
   };
 
   const copyToClipboard = () => {
@@ -43,11 +34,11 @@ export default function CryptoPayment({ price, currency }: CryptoPaymentProps) {
     setStatus("verifying");
 
     try {
-      // Simulate API call to check blockchain
+      // Call our Next.js API route to check TRON testnet
       const res = await fetch('/api/verify-transaction', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ txHash, email, telegram, expectedAmount: price })
+        body: JSON.stringify({ txHash, expectedAmount: price, expectedCurrency: currency })
       });
 
       const data = await res.json();
@@ -88,10 +79,9 @@ export default function CryptoPayment({ price, currency }: CryptoPaymentProps) {
         </a>
 
         <div className="pt-4 border-t border-green-500/20 w-full">
-          <p className="text-xs text-gray-400 mb-1">
-            Резервна копія та ліцензійний ключ також були надіслані на:
+          <p className="text-xs text-gray-400">
+            Збережіть цей файл у надійному місці. Ліцензійний ключ вшитий у ваш архів.
           </p>
-          <p className="font-medium text-white text-xs">{email} | {telegram}</p>
         </div>
       </div>
     );
@@ -173,48 +163,6 @@ export default function CryptoPayment({ price, currency }: CryptoPaymentProps) {
           </button>
         </form>
       </div>
-    );
-  }
-
-  if (status === "details") {
-    return (
-      <form onSubmit={handleProceedToPayment} className="p-6 bg-white/5 border border-white/10 rounded-xl space-y-4">
-        <h3 className="font-bold text-white mb-2">Куди відправити ваш продукт?</h3>
-        <p className="text-xs text-gray-400 mb-4">
-          Вкажіть дані, щоб система знала, куди автоматично надіслати архів та ліцензію після перевірки оплати в блокчейні.
-        </p>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-1">Ваш Email *</label>
-          <input
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full bg-black/50 border border-white/10 rounded-lg py-3 px-4 text-sm text-white focus:outline-none focus:border-purple-500 transition-colors"
-            placeholder="you@company.com"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-1">Telegram (@username) *</label>
-          <input
-            type="text"
-            required
-            value={telegram}
-            onChange={(e) => setTelegram(e.target.value)}
-            className="w-full bg-black/50 border border-white/10 rounded-lg py-3 px-4 text-sm text-white focus:outline-none focus:border-purple-500 transition-colors"
-            placeholder="@yourhandle"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="w-full mt-4 py-4 px-6 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
-        >
-          Продовжити до оплати
-        </button>
-      </form>
     );
   }
 
