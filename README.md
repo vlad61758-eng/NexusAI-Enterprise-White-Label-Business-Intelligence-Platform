@@ -32,16 +32,26 @@ You need Python 3 installed. Open your terminal or command prompt and run:
 pip install -r requirements.txt
 ```
 
-### 4. Run the Bot
+### 4. Run the UserBot (Lead Generator)
 Run the script using:
 ```bash
 python userbot.py
 ```
 *Note: The first time you run the script, it will ask for your phone number and a login code sent to your Telegram app to authenticate your session.*
 
+### 5. Setup and Run the Sales Bot (Optional)
+If you want to resell this tool or act as a manager, you can run the accompanying Sales Bot:
+1. Create a new bot using `@BotFather` on Telegram and get the Token.
+2. In your `.env` file, add `BOT_TOKEN=your_token` and `OWNER_USERNAME=@your_username`.
+3. Run the sales bot using:
+```bash
+python sales_bot.py
+```
+This bot provides a menu for clients to learn about the system and purchase it from you directly!
+
 ## Files
-- `userbot.py`: The main script.
+- `userbot.py`: The main UserBot script (Lead Generator).
+- `sales_bot.py`: The Aiogram Sales Manager Bot.
 - `.env`: Your private configuration file.
 - `requirements.txt`: Python dependencies.
 - `leads.xlsx`: Automatically generated file containing saved leads.
-- `userbot.log`: Log file for monitoring the script's activity and errors.
