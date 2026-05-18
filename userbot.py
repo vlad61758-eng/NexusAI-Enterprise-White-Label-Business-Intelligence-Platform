@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from telethon import TelegramClient, events
 from telethon.errors import FloodWaitError
 from telethon.tl.types import User
-from openai import AsyncOpenAI
+import google.generativeai as genai
 
 # Set up logging
 logging.basicConfig(
@@ -31,12 +31,11 @@ TARGET_CHATS_STR = os.getenv('TARGET_CHATS', '')
 KEYWORDS_STR = os.getenv('KEYWORDS', '')
 ADMIN_CHAT = os.getenv('ADMIN_CHAT', 'me')
 AI_AUTO_REPLY = os.getenv('AI_AUTO_REPLY', 'False').lower() == 'true'
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 
-# Initialize Async OpenAI client if enabled
-openai_client = None
-if AI_AUTO_REPLY and OPENAI_API_KEY:
-    openai_client = AsyncOpenAI(api_key=OPENAI_API_KEY)
+# Initialize Gemini client if enabled
+if AI_AUTO_REPLY and GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
 
 # Validate required variables
 if not API_ID or not API_HASH:
@@ -128,7 +127,7 @@ async def process_lead(event, matched_keywords):
         })
 
         # AI Auto-Reply Logic
-        if AI_AUTO_REPLY and OPENAI_API_KEY:
+        if AI_AUTO_REPLY and GEMINI_API_KEY:
             await handle_ai_reply(event, matched_keywords)
 
     except Exception as e:
@@ -157,23 +156,18 @@ async def handle_ai_reply(event, matched_keywords):
 
         prompt = f"Chat Context:\n{history_text}\n\nUser's message:\n{event.message.text}\n\nGenerate your reply:"
 
-        logger.info("Requesting AI response asynchronously...")
+        logger.info("Requesting Gemini AI response...")
 
-        if not openai_client:
-            logger.error("OpenAI client not initialized.")
-            return
+        # Using Gemini API
+        # We combine system prompt and user prompt since standard chat doesn't strictly require a system role in basic flash calls
+        full_prompt = f"{system_prompt}\n\n{prompt}"
 
-        response = await openai_client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": prompt}
-            ],
-            max_tokens=100,
-            temperature=0.7
-        )
+        # Use run_in_executor to avoid blocking the event loop since genai API is synchronous
+        loop = asyncio.get_event_loop()
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        response = await loop.run_in_executor(None, model.generate_content, full_prompt)
 
-        reply_text = response.choices[0].message.content.strip()
+        reply_text = response.text.strip()
 
         if reply_text:
             # Simulate human typing
