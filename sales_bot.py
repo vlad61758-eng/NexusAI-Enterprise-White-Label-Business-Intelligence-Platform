@@ -69,9 +69,12 @@ async def callback_how_it_works(callback: CallbackQuery):
 async def callback_buy_script(callback: CallbackQuery):
     text = (
         "💻 **Покупка скрипта ($50)**\n\n"
-        "Ви отримаєте архів із повним вихідним кодом на Python (Telethon + Pandas), "
-        "детальну інструкцію `README.md` щодо налаштування та запуску на вашому ПК або сервері.\n\n"
-        f"Для оплати (USDT / Crypto / Карта) та отримання файлів, напишіть власнику: {OWNER_USERNAME}"
+        "Ви отримаєте архів із повним вихідним кодом на Python (Telethon + Pandas) та "
+        "детальну інструкцію щодо налаштування.\n\n"
+        "💳 **Для оплати відправте 50 USDT (мережа TRC20) на адресу:**\n"
+        "`TSP2tJbLpfR1YvRz4VY67nMMXi6PTa6mfK`\n\n"
+        f"Після оплати, будь ласка, надішліть скріншот чеку або хеш транзакції менеджеру: {OWNER_USERNAME}, "
+        "і ви миттєво отримаєте файли!"
     )
     await callback.message.answer(text, parse_mode="Markdown")
     await callback.answer()
@@ -80,12 +83,11 @@ async def callback_buy_script(callback: CallbackQuery):
 async def callback_buy_turnkey(callback: CallbackQuery):
     text = (
         "🚀 **Послуга 'Під Ключ' ($200)**\n\n"
-        "Вам не потрібно знати програмування чи орендувати сервери. Ми зробимо все за вас!\n\n"
-        "✅ Підбір релевантних чатів для вашої ніші.\n"
-        "✅ Налаштування технічного акаунта Telegram.\n"
-        "✅ Встановлення та запуск системи на нашому хмарному сервері (VPS) для роботи 24/7.\n"
-        "✅ 1 місяць технічної підтримки та безкоштовної заміни ключових слів.\n\n"
-        f"Готові масштабувати продажі? Напишіть мені для обговорення деталей: {OWNER_USERNAME}"
+        "Ми налаштуємо сервери та запустимо систему генерації лідів для вас!\n\n"
+        "💳 **Для оплати відправте 200 USDT (мережа TRC20) на адресу:**\n"
+        "`TSP2tJbLpfR1YvRz4VY67nMMXi6PTa6mfK`\n\n"
+        f"Після оплати, надішліть скріншот транзакції менеджеру: {OWNER_USERNAME}. "
+        "Ми зв'яжемося з вами для уточнення вашої ніші та списку чатів."
     )
     await callback.message.answer(text, parse_mode="Markdown")
     await callback.answer()
