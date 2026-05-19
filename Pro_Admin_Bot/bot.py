@@ -4,6 +4,7 @@ from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
 from aiogram.types import Message, ChatPermissions
 from aiogram.enums import ParseMode
+from aiogram.client.default import DefaultBotProperties
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -11,7 +12,7 @@ logging.basicConfig(level=logging.INFO)
 # Initialize Bot and Dispatcher
 # Note: Replace 'YOUR_BOT_TOKEN' with your actual bot token from BotFather
 BOT_TOKEN = "YOUR_BOT_TOKEN"
-bot = Bot(token=BOT_TOKEN, parse_mode=ParseMode.HTML)
+bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 dp = Dispatcher()
 
 # Bad words list for anti-spam/profanity filter
