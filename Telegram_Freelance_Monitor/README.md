@@ -25,10 +25,31 @@ Playwright needs its own browser binaries to work. Run this command:
 playwright install chromium
 ```
 
-### 3. Run the Sniper
-Run the Python script:
+### 3. Set Up `.env` File (For AI & Phone Alerts)
+If you want to use the **Smart AI Sniper** (`smart_sniper.py`) which analyzes tasks and sends notifications to your phone, create a `.env` file in this directory with the following variables:
+
+```env
+# Get this from Google AI Studio
+GEMINI_API_KEY=your_gemini_api_key_here
+
+# Get this by creating a new bot via @BotFather on Telegram
+BOT_TOKEN=your_botfather_token_here
+
+# Get this by sending /start to @userinfobot on Telegram
+MY_CHAT_ID=your_personal_telegram_id_here
+```
+
+### 4. Run the Sniper
+You have two options:
+
+**Option A (Basic Keyword Sniper):** Alerts you only in the console based on keywords.
 ```bash
 python tg_web_monitor.py
+```
+
+**Option B (Smart AI Sniper - Recommended):** Uses AI to filter for 5-10 minute tasks and forwards them to your phone!
+```bash
+python smart_sniper.py
 ```
 
 ## 📱 First Time Login
