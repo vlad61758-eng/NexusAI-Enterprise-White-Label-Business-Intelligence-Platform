@@ -1,0 +1,47 @@
+====================================
+WHOP STORE LISTING (SaaS Style Copy)
+====================================
+
+Title: Pro AI Telegram Admin Bot | 24/7 Automated Community Management
+
+Elevate Your Telegram Community on Autopilot
+
+Stop wasting hours manually deleting spam and managing disruptive members. The Pro AI Telegram Admin Bot is a premium, plug-and-play solution designed to protect, engage, and manage your Telegram groups with zero ongoing effort.
+
+🚀 Instant ROI: Reclaim Your Time
+Your time is your most valuable asset. For the price of a few coffees, you can permanently outsource your group moderation to a tireless digital assistant that never sleeps.
+
+Key Features & Capabilities:
+✅ Instant Spam Annihilation: Our intelligent filter automatically detects and deletes messages containing restricted keywords (scam, crypto, spam links) before your community even sees them.
+✅ Automated VIP Onboarding: Greet every new member with a customizable, professional welcome message that sets the tone for a high-quality community.
+✅ 1-Click Moderation Commands: Instantly take control. Simply reply to a message with `/mute 10` or `/ban` to quietly handle bad actors without breaking a sweat.
+✅ Zero-Code Setup: Delivered as a clean, highly efficient Python script. No coding experience needed—our beginner-friendly guide will have you up and running in under 5 minutes.
+
+Who is this for?
+- Crypto & NFT Project Founders
+- Paid Mastermind Group Owners
+- E-commerce Brand Builders
+- Anyone tired of manual Telegram moderation
+
+What You Get:
+- The full, unencrypted source code (Python/aiogram).
+- A comprehensive, step-by-step PDF/Markdown setup guide.
+- Lifetime ownership of the script (no recurring monthly fees!).
+
+Stop managing. Start scaling. Get the Pro AI Telegram Admin Bot today.
+
+-------------------------
+FAQ
+Q: Do I need to know how to code?
+A: Not at all! We provide a simple, step-by-step guide. If you can copy and paste, you can run this bot.
+Q: Are there any monthly fees?
+A: No. This is a one-time purchase. You own the code forever.
+Q: Can I change the banned words?
+A: Yes! The code is clearly commented, making it incredibly easy to add or remove words from the anti-spam list.
+
+
+====================================
+IMAGE GENERATION PROMPT (Thumbnail)
+====================================
+
+A hyper-realistic, highly detailed 3D isometric software box floating in the center of the frame. The aesthetic is Dark Cyberpunk with a premium, high-ticket SaaS feel. The box features deep obsidian black materials paired with glowing neon green and vibrant neon purple accents. Incorporate heavy glassmorphism elements, showing a frosted glass texture on the front panel with glowing, abstract code streams and a stylized glowing shield icon representing security and moderation. The background is a minimalist dark studio setting with subtle volumetric lighting and sleek, modern reflections to emphasize a "Pro" and "VIP" aesthetic. 8k resolution, Unreal Engine 5 render style, cinematic lighting, masterpiece.
