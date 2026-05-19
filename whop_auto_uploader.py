@@ -3,7 +3,7 @@ import zipfile
 import requests
 
 # Load from environment variable for security, as per best practices.
-WHOP_API_KEY = os.environ.get("WHOP_API_KEY", "apik_woK8B78LznFW7_C5155873_C_3cc2579181a1f939da0da4484848511a95cbd9ccf39ef7016f169b7700f5ac")
+WHOP_API_KEY = os.environ.get("WHOP_API_KEY")
 
 # File paths
 DIRECTORY_TO_ZIP = "Pro_Admin_Bot"
