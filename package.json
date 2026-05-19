@@ -1,8 +1,0 @@
-{
-  "name": "python-repo",
-  "version": "1.0.0",
-  "description": "Dummy package.json for Netlify CI",
-  "scripts": {
-    "build": "echo 'No build required'"
-  }
-}
