@@ -1,0 +1,8 @@
+{
+  "name": "python-bot-project",
+  "version": "1.0.0",
+  "description": "Python project placeholder for Netlify CI",
+  "scripts": {
+    "build": "echo 'No build required'"
+  }
+}

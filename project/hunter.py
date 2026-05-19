@@ -35,28 +35,44 @@ async def run_hunter():
                     target_channels.append(c)
 
     if not target_channels:
-        logger.warning("No TARGET_CHANNELS specified. The Hunter bot will run but won't monitor anything unless configured.")
+        logger.warning("No TARGET_CHANNELS specified. Exiting Hunter to avoid monitoring all private chats globally.")
+        return
 
     client = TelegramClient('hunter_session', api_id, api_hash)
 
-    @client.on(events.NewMessage(chats=target_channels if target_channels else None))
+    import google.generativeai as genai
+    gemini_api_key = os.getenv("GEMINI_API_KEY")
+    if gemini_api_key:
+        genai.configure(api_key=gemini_api_key)
+
+    @client.on(events.NewMessage(chats=target_channels))
     async def handler(event):
         try:
-            # We assume a micro-task contains certain keywords or structure,
-            # or we just process all messages in specific task channels.
-            # For this implementation, we will log all text messages in target channels
-            # as tasks. In a real scenario, more advanced filtering might be needed.
             message_text = event.message.text
-
             if not message_text:
                 return
 
-            # Simple keyword filter (example)
+            # Filter by keywords. Return early if no match, avoiding logging irrelevant messages.
             keywords = ["task", "job", "bounty", "do this", "need help"]
-            if not any(k in message_text.lower() for k in keywords) and target_channels:
-                # If we're monitoring specific channels, we might want to capture everything.
-                # If we're not filtering by keywords, maybe just capture everything.
-                pass
+            if not any(k in message_text.lower() for k in keywords):
+                return
+
+            # Parse instructions using Gemini if available, otherwise just use raw text
+            final_instructions = message_text
+            if gemini_api_key:
+                try:
+                    model = genai.GenerativeModel('gemini-1.5-flash')
+                    prompt = (
+                        "Extract the core task instructions and requirements from the following text. "
+                        "Format it cleanly so it is ready to be executed by another AI agent.\n\n"
+                        f"Text:\n{message_text}"
+                    )
+                    response = await model.generate_content_async(prompt)
+                    if response.text:
+                        final_instructions = response.text
+                except Exception as e:
+                    logger.error(f"Error extracting structured task with Gemini: {e}")
+                    # Fallback to raw text
 
             # Get the message link
             chat = await event.get_chat()
@@ -71,7 +87,7 @@ async def run_hunter():
 
             # Insert into database
             logger.info(f"Hunter found potential task in {source_link}")
-            await insert_task(source_link, message_text)
+            await insert_task(source_link, final_instructions)
 
         except Exception as e:
             logger.error(f"Error handling new message in Hunter: {e}")

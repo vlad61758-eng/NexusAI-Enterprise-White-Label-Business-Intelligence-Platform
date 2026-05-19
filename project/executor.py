@@ -2,10 +2,12 @@ import asyncio
 import os
 import logging
 import google.generativeai as genai
+import html
 from aiogram import Bot
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.exceptions import TelegramAPIError
+from aiogram.types import LinkPreviewOptions
 from db import get_uncompleted_task, mark_task_completed
 
 logger = logging.getLogger(__name__)
@@ -37,7 +39,7 @@ async def process_task(task, bot: Bot, my_chat_id: str):
         # generate_content_async is preferred.
         response = await model.generate_content_async(prompt)
 
-        gemini_output = response.text
+        gemini_output = html.escape(response.text)
 
         # Format the message
         message_text = (
@@ -51,7 +53,11 @@ async def process_task(task, bot: Bot, my_chat_id: str):
         if len(message_text) > 4000:
             message_text = message_text[:4000] + "... [TRUNCATED]"
 
-        await bot.send_message(chat_id=my_chat_id, text=message_text, disable_web_page_preview=True)
+        await bot.send_message(
+            chat_id=my_chat_id,
+            text=message_text,
+            link_preview_options=LinkPreviewOptions(is_disabled=True)
+        )
 
         # Mark as completed
         await mark_task_completed(task_id)
