@@ -1,11 +1,45 @@
-<div align="center">
+# 🎯 Telegram Freelance Task Sniper
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Автоматизована система для пошуку та обробки високооплачуваних завдань на фріланс-каналах у Telegram.
 
-  <h1>Built with AI Studio</h2>
+## 🌟 Можливості
+1. **Автопідписка (`join_channels.py`)**: Скрипт автоматично підписується на цільові Telegram канали із безпечним інтервалом (20-40 сек), щоб уникнути банів.
+2. **Smart Sniper (`task_sniper.py`)**: Бот (UserBot), який моніторить канали в реальному часі. Використовує **Gemini AI** для аналізу тексту завдання:
+   - Відбирає завдання вартістю від 50$.
+   - Фільтрує за низькою складністю.
+   - Генерує готову відповідь (драфт) для замовника.
+3. **Сповіщення Адміну**: Всі відібрані завдання разом із драфтами відповідей відправляються безпосередньо вам в особисті повідомлення за допомогою Telegram бота.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## 🛠 Налаштування
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+1. Встановіть залежності:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Перейменуйте файл `.env.example` на `.env` та заповніть свої дані:
+   - `API_ID` та `API_HASH`: Отримайте на [my.telegram.org](https://my.telegram.org).
+   - `BOT_TOKEN`: Створіть нового бота через [@BotFather](https://t.me/BotFather) і скопіюйте токен.
+   - `GEMINI_API_KEY`: Отримайте ключ у Google AI Studio.
+   - `ADMIN_ID`: Ваш особистий Telegram ID.
 
-</div>
+## 🚀 Запуск
+
+**Крок 1. Ініціалізація сесії (Важливо!)**
+Спочатку потрібно авторизуватися в Telegram, щоб створити файл сесії.
+```bash
+python init_session.py
+```
+Введіть свій номер телефону та код підтвердження з Telegram.
+
+**Крок 2. (Опціонально) Підписка на канали**
+Відредагуйте список `CHANNELS_TO_JOIN` у файлі `join_channels.py`, додавши туди ваші 50+ каналів.
+```bash
+python join_channels.py
+```
+
+**Крок 3. Запуск Sniper Bot**
+Запустіть основний скрипт, який буде моніторити канали:
+```bash
+python task_sniper.py
+```
+*Напишіть своєму боту (якого ви створили в BotFather) повідомлення `/start`, щоб він міг надсилати вам завдання!*
