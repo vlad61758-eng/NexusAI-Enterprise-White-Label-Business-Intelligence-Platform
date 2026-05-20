@@ -1,5 +1,5 @@
 [build]
-  command = "echo 'No build required'"
+  command = "exit 0"
   publish = "public"
 
 [build.environment]
