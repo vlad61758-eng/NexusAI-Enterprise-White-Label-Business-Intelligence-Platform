@@ -1,0 +1,8 @@
+{
+  "name": "python-repo",
+  "version": "1.0.0",
+  "description": "Dummy package to bypass Netlify build errors",
+  "scripts": {
+    "build": "exit 0"
+  }
+}
